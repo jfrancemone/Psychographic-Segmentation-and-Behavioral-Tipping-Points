@@ -40,6 +40,18 @@ I implemented a reusable experimental procedure (The Moral Continuum Procedure) 
 
 ---
 
+### **Methodology**
+
+* **Design:** Between-Subjects Experimental Design (2 Studies).
+* **Participants:** N ≈ 900 (Recruited via standardized panels).
+* **Analysis:**
+    * **Multilevel Modeling:** To test the incremental predictive validity of psychographics over demographics and visualize the "fanning effect" where user segments diverge as content intensity increases.
+* **Tools:**
+    * **SPSS:** Used for primary data cleaning, descriptive statistics, and multilevel modeling.
+    * **R:** Used to generate interaction plots to visualize the "fan effect" of user divergence.
+
+---
+
 ### **Repository Structure**
 
 The project utilizes **SPSS** for statistical modeling and **R** for visualization.
