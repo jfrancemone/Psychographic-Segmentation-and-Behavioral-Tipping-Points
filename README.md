@@ -6,7 +6,7 @@
 
 ### **Project Overview**
 
-**At what point does a user condemn from content?**
+**At what point does a user condemn media content?**
 
 This project identifies the specific **"tipping Point"** where user values override content engagement. By analyzing user responses to agents across a continuum of behaviors, I isolated the exact threshold where "Universal Consensus" (everyone agrees the behavior is okay) fractures into "Psychographic Divergence" (reactions depend on user personality).
 
