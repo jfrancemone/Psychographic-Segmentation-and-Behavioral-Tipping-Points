@@ -48,15 +48,22 @@ The project utilizes **SPSS** for statistical modeling (Hierarchical Regression/
 /Psychographic-Segmentation-and-Behavioral-Tipping-Points
 │
 ├── /data
-│   ├── Study1_Cleaned.csv         <-- Anonymized participant response data
-│   └── Study2_Cleaned.csv         <-- Replication study data
+│   ├── Study_1_Data.csv                               <-- Primary dataset (converted from SAV)
+│   ├── Study_2_Data.csv                               <-- Replication dataset (converted from SAV)
+│   ├── Study_1_Data.sav                               <-- Original .sav files (SPSS)
+│   └── Study_2_Data.sav
 │
 ├── /analysis
-│   ├── Syntax_Regression.sps      <-- SPSS syntax for regression models
-│   └── Interaction_Plots.R        <-- R code for visualizing "Tipping Points"
+│   ├── Study_1_Syntax.sps                             <-- Syntax for Study 1
+│   └── Study_2_Syntax.sps                             <-- Syntax for Study 2
+│
+├── /visualization_and_robustness_checks
+│   ├── Cumulative_Linked_Mixed_Models_Comparison.Rmd  <-- R Markdown using comparison models for robustness check
+│   ├── Multilevel_Models_Visualization.Rmd            <-- R Markdown generating multilevel model visualization
+│   └── Multilevel_Models.png                          <-- Visualization of genre clusters
 │
 ├── /results
-│   ├── Interaction_Graph.png      <-- Visualization of the divergence point
-│   └── Summary_Tables.pdf         <-- Regression coefficients and significance
+│   ├── Study_1_Results.csv                            <-- Visualization of the divergence point
+│   └── Study_2_Results.csv                            <-- Regression coefficients and significance
 │
-└── Francemone_Moral_Tipping_Points.pdf  <-- Full published manuscript
+└── Francemone_Tipping_Points_JMP_2022.pdf             <-- Full published manuscript
