@@ -1,7 +1,7 @@
 # 🧠 Psychographic Segmentation & Behavioral Tipping Points
 
 [![Publication](https://img.shields.io/badge/Publication-Journal_of_Media_Psychology_(2022)-blue)](https://econtent.hogrefe.com/doi/pdf/10.1027/1864-1105/a000367)
-[![Method](https://img.shields.io/badge/Method-Experimental_Design_(N%3D400)-green)](https://github.com/jfrancemone/Psychographic-Segmentation-and-Behavioral-Tipping-Points)
+[![Method](https://img.shields.io/badge/Method-Experimental_Design_(N%3D889)-green)](https://github.com/jfrancemone/Psychographic-Segmentation-and-Behavioral-Tipping-Points)
 [![Tools](https://img.shields.io/badge/Tools-SPSS_%7C_R-orange)](https://github.com/jfrancemone/Psychographic-Segmentation-and-Behavioral-Tipping-Points)
 
 ### **Project Overview**
@@ -36,7 +36,7 @@ I implemented a reusable experimental procedure (The Moral Continuum Procedure) 
 * **Method:** Users evaluated characters across a randomized sequence of escalating behaviors.
 * **Result:** Visualized the exact slope of audience approval in order to pinpoint where engagement drops off for different user segments.
 
-![Multilevel Modeling Visualization](visualization_r/Multilevel_Models.png)
+![Multilevel Modeling Visualization](visualization_and_robustness_checks_r/Multilevel_Models.png)
 
 ---
 
