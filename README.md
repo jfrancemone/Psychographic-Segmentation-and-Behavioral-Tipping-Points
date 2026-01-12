@@ -79,3 +79,13 @@ The project utilizes **SPSS** for statistical modeling and **R** for visualizati
 │   └── Study_2_Results.csv                            <-- Regression coefficients and significance
 │
 └── Francemone_Tipping_Points_2022.pdf                 <-- Full published manuscript
+```
+
+---
+
+### **My Role**
+**Lead Researcher**
+* Conceptualized the "Tipping Point" framework to evaluate user engagement thresholds.
+* Implemented the reusable "Moral Continuum" testing procedure.
+* Conducted all statistical analysis (SPSS), including multilevel modeling.
+* Created the data visualizations (R) to demonstrate user segmentation divergence.
