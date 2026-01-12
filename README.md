@@ -42,7 +42,7 @@ I implemented a reusable experimental procedure (The Moral Continuum Procedure) 
 
 ### **Repository Structure**
 
-The project utilizes **SPSS** for statistical modeling (Hierarchical Regression/ANOVA) and **R** for interaction visualization.
+The project utilizes **SPSS** for statistical modeling and **R** for visualization.
 
 ```text
 /Psychographic-Segmentation-and-Behavioral-Tipping-Points
