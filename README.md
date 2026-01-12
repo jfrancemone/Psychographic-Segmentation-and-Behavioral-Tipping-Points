@@ -8,7 +8,7 @@
 
 **At what point does a user condemn media content?**
 
-This project identifies the specific **"tipping Point"** where user values override content engagement. By analyzing user responses to agents across a continuum of behaviors, I isolated the exact threshold where "Universal Consensus" (everyone agrees the behavior is okay) fractures into "Psychographic Divergence" (reactions depend on user personality).
+This project identifies the specific **tipping point** where user values override content engagement. By analyzing user responses to agents across a continuum of behaviors, I isolated the exact threshold where "Universal Consensus" (everyone agrees the behavior is okay) fractures into "Psychographic Divergence" (reactions depend on user personality).
 
 This research provides a framework for **Trust & Safety** and **Personalization Algorithms**, demonstrating that "offensive" content is not a static label, but a dynamic interaction between content severity and user traits.
 
