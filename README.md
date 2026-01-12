@@ -36,6 +36,8 @@ I implemented a reusable experimental procedure (The Moral Continuum Procedure) 
 * **Method:** Users evaluated characters across a randomized sequence of escalating behaviors.
 * **Result:** Visualized the exact slope of audience approval in order to pinpoint where engagement drops off for different user segments.
 
+![Multilevel Modeling Visualization](visualization_r/Multilevel_Models.png)
+
 ---
 
 ### **Repository Structure**
