@@ -1,7 +1,7 @@
 # 🧠 Psychographic Segmentation & Behavioral Tipping Points
 
 [![Publication](https://img.shields.io/badge/Publication-Journal_of_Media_Psychology_(2022)-blue)](https://econtent.hogrefe.com/doi/pdf/10.1027/1864-1105/a000367)
-[![Method](https://img.shields.io/badge/Method-Experimental_Design_(N%3D889)-green)](https://github.com/jfrancemone/Psychographic-Segmentation-and-Behavioral-Tipping-Points)
+[![Method](https://img.shields.io/badge/Method-Experimental_Design_(N%3D900)-green)](https://github.com/jfrancemone/Psychographic-Segmentation-and-Behavioral-Tipping-Points)
 [![Tools](https://img.shields.io/badge/Tools-SPSS_%7C_R-orange)](https://github.com/jfrancemone/Psychographic-Segmentation-and-Behavioral-Tipping-Points)
 
 ### **Project Overview**
@@ -15,7 +15,7 @@ This research provides a framework for **Trust & Safety** and **Personalization 
 > **📄 Publication:**
 > Francemone, C. J., & Matthews, N. L. (2022). Moral tipping points: How trait moral salience moderates judgments of narrative characters along the moral continuum. *Journal of Media Psychology, 35*(4), 221-227.
 > 
-> [**Read the Full Paper (PDF)**](Francemone_Tipping_Points_JMP_2022.pdf)
+> [**Read the Full Paper (PDF)**](Francemone_Tipping_Points_2022.pdf)
 
 ---
 
@@ -66,4 +66,4 @@ The project utilizes **SPSS** for statistical modeling and **R** for visualizati
 │   ├── Study_1_Results.csv                            <-- Visualization of the divergence point
 │   └── Study_2_Results.csv                            <-- Regression coefficients and significance
 │
-└── Francemone_Tipping_Points_JMP_2022.pdf             <-- Full published manuscript
+└── Francemone_Tipping_Points_2022.pdf                 <-- Full published manuscript
