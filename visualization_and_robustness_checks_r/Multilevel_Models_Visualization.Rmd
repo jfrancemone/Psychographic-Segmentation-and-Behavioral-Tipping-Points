@@ -1,0 +1,420 @@
+---
+title: "Working Manuscript - Figure"
+author: "C. Joseph Francemone"
+date: "March 4, 2020"
+output: pdf_document
+---
+
+```{r Study 1 plots}
+#Study1
+library(ggplot2)
+library(jtools)
+library(patchwork)
+library(scales)
+library(haven)
+library(ggpubr)
+library(scales)
+
+#Means Plots
+
+Valid_Data1 <- read_sav("Study 1/Valid_Data.sav")
+Valid_Data1$MFQ.Harm.Sense <- factor(Valid_Data1$MFQ.Harm.Sense, levels = c("Low", "Moderate", "High"))
+Valid_Data1$MFQ.Fair.Sense <- factor(Valid_Data1$MFQ.Fair.Sense, levels = c("Low", "Moderate", "High"))
+Valid_Data1$MFQ.Loyal.Sense <- factor(Valid_Data1$MFQ.Loyal.Sense, levels = c("Low", "Moderate", "High"))
+Valid_Data1$MFQ.Authority.Sense <- factor(Valid_Data1$MFQ.Authority.Sense, levels = c("Low", "Moderate", "High"))
+Valid_Data1$MFQ.Purity.Sense <- factor(Valid_Data1$MFQ.Purity.Sense, levels = c("Low", "Moderate", "High"))
+
+o1 <- ggplot(Valid_Data1, aes(x=Behavior, y=Judgment)) +
+    stat_summary(show.legend=TRUE,fun.y=mean, geom="line", linetype="dotdash") +
+    stat_summary(show.legend=TRUE,fun.y=mean, geom="point", size=2) +
+    stat_summary(inherit.aes=FALSE,aes(x=Behavior, y=Judgment),fun.data= mean_se, geom="errorbar", width=.35) +
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+    xlab("Behavior") +
+    ggtitle("Means Plots of Moral Judgments", subtitle = "(1= Right, 2= Unsure, 3= Wrong) ") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14,
+              legend.use.title = TRUE) +
+    theme(axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), 
+          axis.title.y = element_blank(), plot.title = element_text(hjust = .5), 
+          plot.subtitle = element_text(hjust = .5), legend.position = "bottom") +
+    guides(linetype=guide_legend(title.position = "top", title.hjust = .5, label.position = "left"))
+
+
+#Harm Sensitivity
+
+h1 <- ggplot(Valid_Data1, aes(x=Behavior, y=Judgment, group = MFQ.Harm.Sense)) +
+     stat_smooth(linetype=0, show.legend = TRUE, color="black", aes(fill=MFQ.Harm.Split), alpha=.8) +
+     scale_fill_manual(values = c("gray", "dimgray", "darkslategray")) +
+     coord_cartesian(ylim=c(1,3)) +
+     labs(fill= "Care Sensitivity") +
+     scale_y_continuous(breaks = c(1,2,3)) +
+     scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+     xlab("Behavior") +
+     ggtitle("Moral Judgment of Behavior Moderated by Care Sensitivity", 
+             subtitle = "(1= Right, 2= Unsure, 3= Wrong) ") +
+      theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14, 
+                legend.use.title = TRUE) +
+      theme(axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), 
+            axis.title.y = element_blank(), plot.title = element_text(hjust = .5), 
+            plot.subtitle = element_text(hjust = .5), legend.position = "bottom") +
+      guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+h112 <- ggplot(subset(Valid_Data1, Harm_Sensitivity %in% c("Low","Moderate")), 
+               aes(x=Behavior, y=Judgment, group = Harm_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Harm_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("gray", "dimgray")) +
+    annotate("rect", xmin = 22, xmax = 24, ymin = -Inf, ymax = Inf, alpha=.25)+
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+    ggtitle("Low vs. Moderate") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+h113 <- ggplot(subset(Valid_Data1, Harm_Sensitivity %in% c("Low","High")), 
+               aes(x=Behavior, y=Judgment, group = Harm_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Harm_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("gray", "darkslategray")) +
+    annotate("rect", xmin = 5, xmax = 6, ymin = -Inf, ymax = Inf, alpha=.25)+
+    annotate("rect", xmin = 20, xmax = 24, ymin = -Inf, ymax = Inf, alpha=.25)+
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+    ggtitle("Low vs. High") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+h123 <- ggplot(subset(Valid_Data1, Harm_Sensitivity %in% c("Moderate","High")), 
+               aes(x=Behavior, y=Judgment, group = Harm_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Harm_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("dimgray", "darkslategray")) +
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+    ggtitle("Moderate vs. High") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+(h1)/(h112|h113|h123) +  plot_layout(guides="collect", heights = c(2.5,1)) & theme(legend.position = "bottom", legend.key = element_rect(size=.75), legend.key.height = unit(.25, "in"), legend.key.width = unit(1,"in"), legend.title = element_text(size=12))
+
+#Fairness Sensitivity
+
+f1 <- ggplot(Valid_Data1, aes(x=Behavior, y=Judgment, group = Fairness_Sensitivity)) +
+     stat_smooth(linetype=0, show.legend = TRUE, color="black", aes(fill=Fairness_Sensitivity), alpha=.8) +
+     scale_fill_manual(values = c("gray", "dimgray", "darkslategray")) +
+     coord_cartesian(ylim=c(1,3)) +
+     labs(fill= "Fairness Sensitivity") +
+     scale_y_continuous(breaks = c(1,2,3)) +
+     scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+     xlab("Behavior") +
+     ggtitle("Moral Judgment of Behavior Moderated by Fairness Sensitivity", 
+             subtitle = "(1= Right, 2= Unsure, 3= Wrong) ") +
+      theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14, 
+                legend.use.title = TRUE) +
+      theme(axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), 
+            axis.title.y = element_blank(), plot.title = element_text(hjust = .5), 
+            plot.subtitle = element_text(hjust = .5), legend.position = "bottom") +
+      guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+f112 <- ggplot(subset(Valid_Data1, Fairness_Sensitivity %in% c("Low","Moderate")), 
+               aes(x=Behavior, y=Judgment, group = Fairness_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Fairness_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("gray", "dimgray")) +
+    annotate("rect", xmin = 22, xmax = 23, ymin = -Inf, ymax = Inf, alpha=.25)+
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+    ggtitle("Low vs. Moderate") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+f113 <- ggplot(subset(Valid_Data1, Fairness_Sensitivity %in% c("Low","High")), 
+               aes(x=Behavior, y=Judgment, group = Fairness_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Fairness_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("gray", "darkslategray")) +
+    annotate("rect", xmin = 6, xmax = 7, ymin = -Inf, ymax = Inf, alpha=.25)+
+    annotate("rect", xmin = 13, xmax = 15, ymin = -Inf, ymax = Inf, alpha=.25)+
+    annotate("rect", xmin = 18, xmax = 19, ymin = -Inf, ymax = Inf, alpha=.25)+
+    annotate("rect", xmin = 21, xmax = 23, ymin = -Inf, ymax = Inf, alpha=.25)+
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+    ggtitle("Low vs. High") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+f123 <- ggplot(subset(Valid_Data1, Fairness_Sensitivity %in% c("Moderate","High")), 
+               aes(x=Behavior, y=Judgment, group = Fairness_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Fairness_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("dimgray", "darkslategray")) +
+    annotate("rect", xmin = 6, xmax = 7, ymin = -Inf, ymax = Inf, alpha=.25)+
+    annotate("rect", xmin = 17, xmax = 18, ymin = -Inf, ymax = Inf, alpha=.25)+
+    annotate("rect", xmin = 21, xmax = 22, ymin = -Inf, ymax = Inf, alpha=.25)+
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+    ggtitle("Moderate vs. High") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+(f1)/(f112|f113|f123) +  plot_layout(guides="collect", heights = c(2.5,1)) & theme(legend.position = "bottom", legend.key = element_rect(size=.75), legend.key.height = unit(.25, "in"), legend.key.width = unit(1,"in"), legend.title = element_text(size=12))
+
+#Authority Sensitivity
+
+a1 <- ggplot(Valid_Data1, aes(x=Behavior, y=Judgment, group = Authority_Sensitivity)) +
+     stat_smooth(linetype=0, show.legend = TRUE, color="black", aes(fill=Authority_Sensitivity), alpha=.8) +
+     scale_fill_manual(values = c("gray", "dimgray", "darkslategray")) +
+     coord_cartesian(ylim=c(1,3)) +
+     labs(fill= "Authority Sensitivity") +
+     scale_y_continuous(breaks = c(1,2,3)) +
+     scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+     xlab("Behavior") +
+     ggtitle("Moral Judgment of Behavior Moderated by Authority Sensitivity", 
+             subtitle = "(1= Right, 2= Unsure, 3= Wrong) ") +
+      theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14, 
+                legend.use.title = TRUE) +
+      theme(axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), 
+            axis.title.y = element_blank(), plot.title = element_text(hjust = .5), 
+            plot.subtitle = element_text(hjust = .5), legend.position = "bottom") +
+      guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+a112 <- ggplot(subset(Valid_Data1, Authority_Sensitivity %in% c("Low","Moderate")), 
+               aes(x=Behavior, y=Judgment, group = Authority_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Authority_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("gray", "dimgray")) +
+    annotate("rect", xmin = 22, xmax = 23, ymin = -Inf, ymax = Inf, alpha=.25)+
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+    ggtitle("Low vs. Moderate") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+a113 <- ggplot(subset(Valid_Data1, Authority_Sensitivity %in% c("Low","High")), 
+               aes(x=Behavior, y=Judgment, group = Authority_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Authority_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("gray", "darkslategray")) +
+    annotate("rect", xmin = 21, xmax = 24, ymin = -Inf, ymax = Inf, alpha=.25)+
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+    ggtitle("Low vs. High") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+a123 <- ggplot(subset(Valid_Data1, Authority_Sensitivity %in% c("Moderate","High")), 
+               aes(x=Behavior, y=Judgment, group = Authority_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Authority_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("dimgray", "darkslategray")) +
+    annotate("rect", xmin = 22, xmax = 24, ymin = -Inf, ymax = Inf, alpha=.25)+
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+    ggtitle("Moderate vs. High") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+(a1)/(a112|a113|a123) +  plot_layout(guides="collect", heights = c(2.5,1)) & theme(legend.position = "bottom", legend.key = element_rect(size=.75), legend.key.height = unit(.25, "in"), legend.key.width = unit(1,"in"), legend.title = element_text(size=12))
+
+```
+
+
+
+```{r Study 2 plots}
+
+#Study2
+Valid_Data2 <- read_sav("~/++Research/Judging Harm/Study 2/Valid_Data.sav")
+Valid_Data2$Harm_Sensitivity <- factor(Valid_Data2$Harm_Sensitivity, levels = c("Low", "Moderate", "High"))
+Valid_Data2$Purity_Sensitivity <- factor(Valid_Data2$Purity_Sensitivity, levels = c("Low", "Moderate", "High"))
+
+o2 <- ggplot(Valid_Data2, aes(x=Behavior, y=Judgment)) +
+    stat_summary(show.legend=TRUE,fun.y=mean, geom="line", linetype="dotdash") +
+    stat_summary(show.legend=TRUE,fun.y=mean, geom="point", size=2) +
+    stat_summary(inherit.aes=FALSE,aes(x=Behavior, y=Judgment),fun.data= mean_se, geom="errorbar", width=.35) +
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks= c(4,8,12,16,20,24)) +
+    xlab("Behavior") +
+    ggtitle("Means Plots of Moral Judgments", subtitle = "(1= Right, 2= Unsure, 3= Wrong) ") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14,
+              legend.use.title = TRUE) +
+    theme(axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), 
+          axis.title.y = element_blank(), plot.title = element_text(hjust = .5), 
+          plot.subtitle = element_text(hjust = .5), legend.position = "bottom") +
+    guides(linetype=guide_legend(title.position = "top", title.hjust = .5, label.position = "left"))
+
+
+#Harm Sensitivity
+
+h2 <- ggplot(Valid_Data2, aes(x=Behavior, y=Judgment, group = Harm_Sensitivity)) +
+     stat_smooth(linetype=0, show.legend = TRUE, color="black", aes(fill=Harm_Sensitivity), alpha=.8) +
+     scale_fill_manual(values = c("gray", "dimgray", "darkslategray")) +
+     coord_cartesian(ylim=c(1,3)) +
+     labs(fill= "Care Sensitivity") +
+     scale_y_continuous(breaks = c(1,2,3)) +
+     scale_x_continuous(breaks=pretty_breaks(n=6)) +
+     xlab("Behavior") +
+     ggtitle("Moral Judgment of Behavior Moderated by Care Sensitivity", 
+             subtitle = "(1= Right, 2= Unsure, 3= Wrong) ") +
+      theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14, 
+                legend.use.title = TRUE) +
+      theme(axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), 
+            axis.title.y = element_blank(), plot.title = element_text(hjust = .5), 
+            plot.subtitle = element_text(hjust = .5), legend.position = "bottom") +
+      guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+h212 <- ggplot(subset(Valid_Data2, Harm_Sensitivity %in% c("Low","Moderate")), 
+               aes(x=Behavior, y=Judgment, group = Harm_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Harm_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("gray", "dimgray")) +
+    annotate("rect", xmin = 7, xmax = 8, ymin = -Inf, ymax = Inf, alpha=.25)+
+    annotate("rect", xmin = 9, xmax = 12, ymin = -Inf, ymax = Inf, alpha=.25)+
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks=pretty_breaks(n=6)) +
+    ggtitle("Low vs. Moderate") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+h213 <- ggplot(subset(Valid_Data2, Harm_Sensitivity %in% c("Low","High")), 
+               aes(x=Behavior, y=Judgment, group = Harm_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Harm_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("gray", "darkslategray")) +
+    annotate("rect", xmin = 9, xmax = 12, ymin = -Inf, ymax = Inf, alpha=.25)+
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks=pretty_breaks(n=6)) +
+    ggtitle("Low vs. High") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+h223 <- ggplot(subset(Valid_Data2, Harm_Sensitivity %in% c("Moderate","High")), 
+               aes(x=Behavior, y=Judgment, group = Harm_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Harm_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("dimgray", "darkslategray")) +
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks=pretty_breaks(n=6)) +
+    ggtitle("Moderate vs. High") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+(h2)/(h212|h213|h223) +  plot_layout(guides="collect", heights = c(2.5,1)) & theme(legend.position = "bottom", legend.key = element_rect(size=.75), legend.key.height = unit(.25, "in"), legend.key.width = unit(1,"in"), legend.title = element_text(size=12))
+
+#Purity Sensitivity
+
+p2 <- ggplot(Valid_Data2, aes(x=Behavior, y=Judgment, group = Purity_Sensitivity)) +
+     stat_smooth(linetype=0, show.legend = TRUE, color="black", aes(fill=Purity_Sensitivity), alpha=.8) +
+     scale_fill_manual(values = c("gray", "dimgray", "darkslategray")) +
+     coord_cartesian(ylim=c(1,3)) +
+     labs(fill= "Purity Sensitivity") +
+     scale_y_continuous(breaks = c(1,2,3)) +
+     scale_x_continuous(breaks=pretty_breaks(n=6)) +
+     xlab("Behavior") +
+     ggtitle("Moral Judgment of Behavior Moderated by Purity Sensitivity", 
+             subtitle = "(1= Right, 2= Unsure, 3= Wrong) ") +
+      theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14, 
+                legend.use.title = TRUE) +
+      theme(axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12), 
+            axis.title.y = element_blank(), plot.title = element_text(hjust = .5), 
+            plot.subtitle = element_text(hjust = .5), legend.position = "bottom") +
+      guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+p212 <- ggplot(subset(Valid_Data2, Purity_Sensitivity %in% c("Low","Moderate")), 
+               aes(x=Behavior, y=Judgment, group = Purity_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Purity_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("gray", "dimgray")) +
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks=pretty_breaks(n=6)) +
+    ggtitle("Low vs. Moderate") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+p213 <- ggplot(subset(Valid_Data2, Purity_Sensitivity %in% c("Low","High")), 
+               aes(x=Behavior, y=Judgment, group = Purity_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Purity_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("gray", "darkslategray")) +
+    annotate("rect", xmin = 10, xmax = 11, ymin = -Inf, ymax = Inf, alpha=.25)+
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks=pretty_breaks(n=6)) +
+    ggtitle("Low vs. High") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+p223 <- ggplot(subset(Valid_Data2, Purity_Sensitivity %in% c("Moderate","High")), 
+               aes(x=Behavior, y=Judgment, group = Purity_Sensitivity)) +
+    stat_smooth(linetype=0, show.legend = FALSE, color="black", aes(fill=Purity_Sensitivity), alpha=.8) +
+    scale_fill_manual(values = c("dimgray", "darkslategray")) +
+    coord_cartesian(ylim=c(1,3)) +
+    scale_y_continuous(breaks = c(1,2,3)) +
+    scale_x_continuous(breaks=pretty_breaks(n=6)) +
+    ggtitle("Moderate vs. High") +
+    xlab("Behavior") +
+    theme_apa(remove.y.gridlines = FALSE, remove.x.gridlines = FALSE, x.font.size = 14, y.font.size = 14) +
+    theme(axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+          axis.title.x = element_text(size=10), axis.title.y = element_blank(), 
+          plot.title = element_text(size=12, hjust = .5)) +
+    guides(fill= guide_legend(title.position = "top", title.hjust = .5, label.position = "bottom"))
+
+(p2)/(p212|p213|p223) +  plot_layout(guides="collect", heights = c(2.5,1)) & theme(legend.position = "bottom", legend.key = element_rect(size=.75), legend.key.height = unit(.25, "in"), legend.key.width = unit(1,"in"), legend.title = element_text(size=12))
+
+```

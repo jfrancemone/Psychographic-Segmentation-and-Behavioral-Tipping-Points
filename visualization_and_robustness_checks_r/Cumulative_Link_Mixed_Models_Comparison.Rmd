@@ -1,0 +1,27 @@
+---
+title: "Cumulative Link Mixed Models"
+output: pdf_document
+---
+
+```{r CLMM, warning=FALSE, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+
+#Load packages
+library(haven)
+library(ordinal)
+
+#Load in data
+Study_1 <- read_sav("Long Form Data 1.sav")
+Study_2 <- read_sav("Long Form Data 2.sav")
+
+#Set Judgment to ordered factor
+Study_1$Judgment <- factor(Study_1$Judgment, ordered = TRUE)
+Study_2$Judgment <- factor(Study_2$Judgment, ordered = TRUE)
+
+#Run models
+model_4_1 <- clmm(Judgment ~ 1 + MFQ.Harm + MFQ.Fair + MFQ.Loyal + MFQ.Authority + MFQ.Purity + Behavior_RE + MFQ.Harm*Behavior + MFQ.Fair*Behavior_RE + MFQ.Loyal*Behavior_RE + MFQ.Authority*Behavior_RE + MFQ.Purity*Behavior_RE + (1+Behavior_RE|ID), data = Study_1, link = "probit")
+model_4_2 <- clmm(Judgment ~ 1 + MFQ.Harm + MFQ.Fair + MFQ.Loyal + MFQ.Authority + MFQ.Purity + Behavior_RE + MFQ.Harm*Behavior + MFQ.Fair*Behavior_RE + MFQ.Loyal*Behavior_RE + MFQ.Authority*Behavior_RE + MFQ.Purity*Behavior_RE + (1+Behavior_RE|ID), data = Study_2, link = "probit")
+
+#Output
+summary(model_4_1)
+summary(model_4_2)
+```
