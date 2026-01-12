@@ -6,9 +6,7 @@
 
 ### **Project Overview**
 
-**A psychographic segmentation study determining exactly when users disengage from content.**
-
-This project utilizes **SPSS** (Regression/ANOVA) to model behavioral thresholds and **R** to visualize the divergence points where user values override content engagement. By analyzing user responses to narrative characters across a continuum of behaviors, I isolated the exact threshold where "Universal Consensus" (everyone agrees the behavior is okay) fractures into "Psychographic Divergence" (reactions depend on user personality).
+This project utilizes **multilevel modeling** to identify and visualize the divergence points where user values override content engagement. By analyzing user responses to agents characters across a continuum of behaviors, I isolated the exact threshold where "Universal Consensus" (everyone agrees the behavior is okay) fractures into "Psychographic Divergence" (reactions depend on user personality).
 
 This research provides a framework for **Trust & Safety** and **Personalization Algorithms**, demonstrating that "offensive" content is not a static label, but a dynamic interaction between content severity and user traits.
 
