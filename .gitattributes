@@ -1,0 +1,7 @@
+# Fix the language detection for SPSS Syntax
+*.sps linguist-language=SPSS
+
+# Treat data files as binary (prevents corruption during merges)
+*.sav binary
+*.spv binary
+*.xlsx binary
