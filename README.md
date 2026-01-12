@@ -15,7 +15,7 @@ This research provides a framework for **Trust & Safety** and **Personalization 
 > **📄 Publication:**
 > Francemone, C. J., & Matthews, N. L. (2022). Moral tipping points: How trait moral salience moderates judgments of narrative characters along the moral continuum. *Journal of Media Psychology.*
 >
-> 👉[**Read the Full Paper (PDF)**](Francemone_Moral_Tipping_Points.pdf)
+> 👉 [**Read the Full Paper (PDF)**](Francemone_Moral_Tipping_Points.pdf)
 
 ---
 
