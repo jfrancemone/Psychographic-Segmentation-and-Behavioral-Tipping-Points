@@ -13,7 +13,7 @@ This project utilizes **SPSS** (Regression/ANOVA) to model behavioral thresholds
 This research provides a framework for **Trust & Safety** and **Personalization Algorithms**, demonstrating that "offensive" content is not a static label, but a dynamic interaction between content severity and user traits.
 
 > **📄 Publication:**
-> Francemone, C. J., & Matthews, N. L. (2022). Moral tipping points: How trait moral salience moderates judgments of narrative characters along the moral continuum. *Journal of Media Psychology.*
+> Francemone, C. J., & Matthews, N. L. (2022). Moral tipping points: How trait moral salience moderates judgments of narrative characters along the moral continuum. *Journal of Media Psychology: Theories, Methods, and Applications, 35*(4), 221-227.
 >
 > 👉 [**Read the Full Paper (PDF)**](Francemone_Tipping_Points_JMP_2022.pdf)
 
