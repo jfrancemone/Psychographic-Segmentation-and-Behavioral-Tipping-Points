@@ -21,7 +21,7 @@ This research provides a framework for **Trust & Safety** and **Personalization 
 
 ### **Key Findings & Strategic Insights**
 
-#### **1. The "Tipping Point" Threshold**
+#### **1. The Tipping Point Threshold**
 We often assume users judge content linearly. This study proves otherwise.
 * **The Finding:** For mild transgressions, user demographics and psychographics do not matter and audience sentiment is largely uniform (Consensus).
 * **The Shift:** Once content crosses a specific severity threshold (The Tipping Point), audience sentiment fractures.
@@ -31,7 +31,7 @@ We often assume users judge content linearly. This study proves otherwise.
 * **The Driver:** **Trait Moral Salience** (a user's sensitivity to harmful transgressions) was the single strongest predictor of negative reaction *after* the tipping point.
 * **Strategic Application:** Platforms can reduce churn by scoring users on sensitivity metrics and filtering borderline content accordingly, rather than banning content globally.
 
-#### **3. The "Moral Continuum" Framework**
+#### **3. The Moral Continuum Framework**
 I implemented a reusable experimental procedure (The Moral Continuum Procedure) to test user tolerance.
 * **Method:** Users evaluated characters across a randomized sequence of escalating behaviors.
 * **Result:** Visualized the exact slope of audience approval in order to pinpoint where engagement drops off for different user segments.
