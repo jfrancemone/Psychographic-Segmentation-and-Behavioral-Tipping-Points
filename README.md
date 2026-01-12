@@ -28,7 +28,7 @@ We often assume users judge content linearly. This study proves otherwise.
 * **Business Impact:** Content moderation algorithms cannot treat all users the same. High-severity content requires **psychographic filtering** rather than broad demographic targeting.
 
 #### **2. Psychographics Predict Churn**
-* **The Driver:** **"Trait Moral Salience"** (a user's sensitivity to specific moral values) was the single strongest predictor of negative reaction *after* the tipping point.
+* **The Driver:** **Trait Moral Salience** (a user's sensitivity to harmful transgressions) was the single strongest predictor of negative reaction *after* the tipping point.
 * **Strategic Application:** Platforms can reduce churn by scoring users on sensitivity metrics and filtering borderline content accordingly, rather than banning content globally.
 
 #### **3. The "Moral Continuum" Framework**
