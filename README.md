@@ -46,7 +46,7 @@ I implemented a reusable experimental procedure (The Moral Continuum Procedure) 
     * **Multilevel Modeling:** To test the incremental predictive validity of psychographics over demographics and visualize the fanning effect where user segments diverge as content intensity increases.
 * **Tools:**
     * **SPSS:** Used for primary data cleaning, descriptive statistics, and multilevel modeling.
-    * **R:** Used to generate interaction plots to visualize the "fan effect" of user divergence.
+    * **R:** Used to generate interaction plots to visualize the fan effect of user divergence.
 
 ---
 
