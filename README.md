@@ -6,7 +6,7 @@
 
 ### **Project Overview**
 
-This project identifies the specific **tipping point** where user values override content engagement. By analyzing user responses to agents across a continuum of behaviors, I isolated the exact threshold where "Universal Consensus" (everyone agrees the behavior is okay) fractures into "Psychographic Divergence" (reactions depend on user personality).
+This project identifies the specific **tipping point** where user values override content engagement. By analyzing user responses to agents across a continuum of behaviors, I isolated the exact threshold where universal consensus (everyone agrees the behavior is okay) fractures into psychographic divergence (reactions depend on user personality).
 
 This research provides a framework for **Trust & Safety** and **Personalization Algorithms**, demonstrating that "offensive" content is not a static label, but a dynamic interaction between content severity and user traits.
 
@@ -43,7 +43,7 @@ I implemented a reusable experimental procedure (The Moral Continuum Procedure) 
 * **Design:** Between-Subjects Experimental Design (2 Studies).
 * **Participants:** N ≈ 900 (Recruited via standardized panels).
 * **Analysis:**
-    * **Multilevel Modeling:** To test the incremental predictive validity of psychographics over demographics and visualize the "fanning effect" where user segments diverge as content intensity increases.
+    * **Multilevel Modeling:** To test the incremental predictive validity of psychographics over demographics and visualize the fanning effect where user segments diverge as content intensity increases.
 * **Tools:**
     * **SPSS:** Used for primary data cleaning, descriptive statistics, and multilevel modeling.
     * **R:** Used to generate interaction plots to visualize the "fan effect" of user divergence.
@@ -83,7 +83,7 @@ The project utilizes **SPSS** for statistical modeling and **R** for visualizati
 
 ### **My Role**
 **Lead Researcher**
-* Conceptualized the "Tipping Point" framework to evaluate user engagement thresholds.
-* Implemented the reusable "Moral Continuum" testing procedure.
+* Conceptualized the tipping point framework to evaluate user engagement thresholds.
+* Implemented the reusable Moral Continuum testing procedure.
 * Conducted all statistical analysis (SPSS), including multilevel modeling.
 * Created the data visualizations (R) to demonstrate user segmentation divergence.
