@@ -8,7 +8,7 @@
 
 This project identifies the specific **tipping point** where user values override content engagement. By analyzing user responses to agents across a continuum of behaviors, I isolated the exact threshold where universal consensus (everyone agrees the behavior is okay) fractures into psychographic divergence (reactions depend on user personality).
 
-This research provides a framework for **Trust & Safety** and **Personalization Algorithms**, demonstrating that "offensive" content is not a static label, but a dynamic interaction between content severity and user traits.
+This research provides a framework for **Trust & Safety** and **Personalization Algorithms**, demonstrating that offensive content is not a static label, but a dynamic interaction between content severity and user traits.
 
 > **📄 Publication:**
 > Francemone, C. J., & Matthews, N. L. (2022). Moral tipping points: How trait moral salience moderates judgments of narrative characters along the moral continuum. *Journal of Media Psychology, 35*(4), 221-227.
