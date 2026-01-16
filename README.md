@@ -70,7 +70,7 @@ Applied the Moral Continuum Procedure (Matthews, 2019) to systematically test us
 ├── /visualization_and_robustness_checks
 │   ├── Cumulative_Linked_Mixed_Models_Comparison.Rmd  <-- R Markdown using comparison models for robustness check
 │   ├── Multilevel_Models_Visualization.Rmd            <-- R Markdown generating multilevel model visualization
-│   └── Multilevel_Models.png                          <-- Visualization of genre clusters
+│   └── Multilevel_Models.png                          <-- Visualization of divergence effect
 │
 ├── /results
 │   ├── Study_1_Results.csv                            <-- Visualization of the divergence point
