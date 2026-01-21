@@ -1,5 +1,4 @@
-# 🧠 Psychographic Segmentation & Behavioral Tipping Points
-
+# 🧠 Psychographic Segmentation for User Safety
 [![Publication](https://img.shields.io/badge/Publication-Journal_of_Media_Psychology_(2022)-blue)](https://econtent.hogrefe.com/doi/pdf/10.1027/1864-1105/a000367)
 [![Method](https://img.shields.io/badge/Method-Experiment_(N%3D889)-green)](https://github.com/jfrancemone/Psychographic-Segmentation-and-Behavioral-Tipping-Points)
 [![Tools](https://img.shields.io/badge/Tools-SPSS_%7C_R-orange)](https://github.com/jfrancemone/Psychographic-Segmentation-and-Behavioral-Tipping-Points)
